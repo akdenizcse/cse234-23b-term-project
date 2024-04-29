@@ -260,7 +260,7 @@ fun HomeScreen(navController: NavController) {
                                 ) {
                                     Button(
                                         onClick = {
-                                            navController.navigate("RecıpKar")
+                                            navController.navigate("SgnBa")
                                         },
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)

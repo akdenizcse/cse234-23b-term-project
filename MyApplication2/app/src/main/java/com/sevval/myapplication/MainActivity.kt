@@ -90,8 +90,8 @@ fun Navigation(){
         composable(route="HomeScreen"){
             HomeScreen(navControl)
         }
-        composable(route="RecıpKar"){
-            RecıpKar()
+        composable(route="SgnBa"){
+            SgnBa()
         }
         composable(route="RecıpChes"){
             RecıpChes()
