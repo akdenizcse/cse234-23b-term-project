@@ -73,8 +73,8 @@ fun Logın(navController: NavController) {
 
         Spacer(modifier = Modifier.height(10.dp))
         TextField(value = name, onValueChange = {name=it},
-            placeholder = { Text(text = "Name") },
-            label ={ Text(text="Name") },
+            placeholder = { Text(text = "Your Email") },
+            label ={ Text(text="Your Email") },
             singleLine = true ,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -84,8 +84,8 @@ fun Logın(navController: NavController) {
         Text(text =name, fontSize = 25.sp )
 
         TextField(value = surname, onValueChange = {surname=it},
-            placeholder = { Text(text = "Surname") },
-            label ={ Text(text="Surname") } ,
+            placeholder = { Text(text = "Your User Name") },
+            label ={ Text(text="Your User Name") } ,
             singleLine = true ,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -97,7 +97,6 @@ fun Logın(navController: NavController) {
             onValueChange = {
                 password = it
             },
-            placeholder = { Text(text = "example@gmail.com") },
             label = { Text(text = "Password") },
             trailingIcon = {
                 IconButton(onClick = {

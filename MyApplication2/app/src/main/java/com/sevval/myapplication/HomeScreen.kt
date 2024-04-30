@@ -200,10 +200,10 @@ fun HomeScreen(navController: NavController) {
 
         { paddingValue ->
 
-            val tur = listOf("karnıyarık   ", "kuru fasulye   ", "imanbayıldı  ", "kereviz  ")
-            val dıs = listOf("cheese cake", "kıbrıs tatlısı", "tramisu     ", "yaşpasta ")
-            val face = listOf("hamburger", "döner", "iskender", "tavuk pilav")
-            val dr = listOf("ayran", "milkshake", "cheery juies", "salep")
+            val tur = listOf("Pisces   ", ".  ", ".  ", ". ")
+            val dıs = listOf("cheese cake", ".", ".    ", ".")
+            val face = listOf("hamburger", ".", .", ".")
+            val dr = listOf("ayran", ".", ".", ".")
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top,
@@ -265,7 +265,7 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ba), contentDescription = "karnı yarık" ,
+                                        Image(painter = painterResource(id = R.drawable.ba), contentDescription = "Pisces" ,
                                             Modifier
                                                 .width(900.dp)
                                                 .height(900.dp))
@@ -308,12 +308,12 @@ fun HomeScreen(navController: NavController) {
                                 ) {
                                     Button(
                                         onClick = {
-                                            navController.navigate("RecıpChes")
+                                            navController.navigate("SgnOg")
                                         },
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.og), contentDescription = "cheese cake lemon",
+                                        Image(painter = painterResource(id = R.drawable.og), contentDescription = "Capricorn",
                                             Modifier
                                                 .width(1400.dp)
                                                 .height(1400.dp) )
@@ -361,7 +361,7 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(1.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ko), contentDescription = "Aries",
+                                        Image(painter = painterResource(id = R.drawable.k), contentDescription = "Aries",
                                             Modifier
                                                 .width(1400.dp)
                                                 .height(1400.dp) )
@@ -409,7 +409,7 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(1.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ye), contentDescription = "crab",
+                                        Image(painter = painterResource(id = R.drawable.y), contentDescription = "Cancer",
                                             Modifier
                                                 .width(1400.dp)
                                                 .height(1400.dp) )
