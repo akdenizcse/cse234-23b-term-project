@@ -201,9 +201,9 @@ fun HomeScreen(navController: NavController) {
         { paddingValue ->
 
             val tur = listOf("Pisces   ", ".  ", ".  ", ". ")
-            val dıs = listOf("cheese cake", ".", ".    ", ".")
-            val face = listOf("hamburger", ".", .", ".")
-            val dr = listOf("ayran", ".", ".", ".")
+            val dıs = listOf("Capricorn", ".", ".    ", ".")
+            val face = listOf("Aries", ".", .", ".")
+            val dr = listOf("Cancer", ".", ".", ".")
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top,
