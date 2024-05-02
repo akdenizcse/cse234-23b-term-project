@@ -200,10 +200,10 @@ fun HomeScreen(navController: NavController) {
 
         { paddingValue ->
 
-            val tur = listOf("karnıyarık   ", "kuru fasulye   ", "imanbayıldı  ", "kereviz  ")
-            val dıs = listOf("cheese cake", "kıbrıs tatlısı", "tramisu     ", "yaşpasta ")
-            val face = listOf("hamburger", "döner", "iskender", "tavuk pilav")
-            val dr = listOf("ayran", "milkshake", "cheery juies", "salep")
+            val tur = listOf("Pisces   ", ".  ", ".  ", ". ")
+            val dıs = listOf("Capricorn", ".", ".    ", ".")
+            val face = listOf("Aries", ".", .", ".")
+            val dr = listOf("Cancer", ".", ".", ".")
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top,
@@ -265,7 +265,7 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ba), contentDescription = "karnı yarık" ,
+                                        Image(painter = painterResource(id = R.drawable.ba), contentDescription = "Pisces" ,
                                             Modifier
                                                 .width(900.dp)
                                                 .height(900.dp))
@@ -308,12 +308,12 @@ fun HomeScreen(navController: NavController) {
                                 ) {
                                     Button(
                                         onClick = {
-                                            navController.navigate("RecıpChes")
+                                            navController.navigate("SgnOg")
                                         },
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.og), contentDescription = "cheese cake lemon",
+                                        Image(painter = painterResource(id = R.drawable.og), contentDescription = "Capricorn",
                                             Modifier
                                                 .width(1400.dp)
                                                 .height(1400.dp) )
@@ -361,7 +361,7 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(1.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ko), contentDescription = "Aries",
+                                        Image(painter = painterResource(id = R.drawable.k), contentDescription = "Aries",
                                             Modifier
                                                 .width(1400.dp)
                                                 .height(1400.dp) )
@@ -409,7 +409,7 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(1.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ye), contentDescription = "crab",
+                                        Image(painter = painterResource(id = R.drawable.y), contentDescription = "Cancer",
                                             Modifier
                                                 .width(1400.dp)
                                                 .height(1400.dp) )
@@ -426,197 +426,5 @@ fun HomeScreen(navController: NavController) {
         }
     }
 }
-    /*
-    var search by remember { mutableStateOf(" ") }
-    val tur=listOf("comedia","action","romantic","dram")
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Purple80)
-    ) {
-        Row(
-            verticalAlignment = Alignment.Top,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            boxScreen(resId = R.drawable.menu, description = "menu")
-            Box(
-                modifier = Modifier
-                    .border(3.dp, Pink40)
-                    .background(Color.White)
-                    //.fillMaxWidth()
-                    //.size(40.dp)
-                    .width(330.dp)
-                    .height(30.dp)
-                    .padding(8.dp)
-                    .clip(RoundedCornerShape(10.dp)), contentAlignment = Alignment.Center
-            ) {
 
-                Row {
-                    Text(text = search, fontSize = 25.sp)
-                    TextField(value = search, onValueChange = { search = it },
-                        placeholder = { Text(text = "Search") },
-                        label = { Text(text = "Search") })
-                    boxScreen(resId = R.drawable.searc, description = "search")
-                }
-
-            }
-        }
-
-        Spacer(modifier = Modifier.height(10.dp))
-       Box(
-            modifier = Modifier
-                .background(PurpleGrey40)
-                .border(3.dp, Color.White)
-                .padding(20.dp)
-                .height(150.dp)
-                .width(330.dp)
-                .clip(RoundedCornerShape(10.dp))
-        )
-        {
-            Spacer(modifier = Modifier.height(5.dp))
-           LazyRow{
-               items(tur){tur->
-                   Card(modifier= Modifier
-                       .border(3.dp, Color.Black)
-                       .height(100.dp)
-                       .width(100.dp)
-                       .clip(RoundedCornerShape(20.dp))
-                       .background(PurpleGrey40)){
-                       Column(modifier=Modifier
-                           .fillMaxSize()
-                           ,verticalArrangement = Arrangement.Center
-                           ,horizontalAlignment = Alignment.CenterHorizontally
-                       ){
-                           Text(text= tur)
-                       }
-                   }
-
-               }
-           }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        Box(
-            modifier = Modifier
-                .background(PurpleGrey40)
-                .border(3.dp, Color.White)
-                .padding(20.dp)
-                .height(50.dp)
-                .width(330.dp)
-                .clip(RoundedCornerShape(10.dp))
-        )
-        {
-            Spacer(modifier = Modifier.height(5.dp))
-            LazyRow{
-                items(tur){tur->
-                    Card(modifier= Modifier
-                        .border(3.dp, Color.Black)
-                        .height(100.dp)
-                        .width(100.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(PurpleGrey40)){
-                        Column(modifier=Modifier
-                            .fillMaxSize()
-                            ,verticalArrangement = Arrangement.Center
-                            ,horizontalAlignment = Alignment.CenterHorizontally
-                        ){
-                            Text(text= tur)
-                        }
-                    }
-
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        Box(
-            modifier = Modifier
-                .background(PurpleGrey40)
-                .border(3.dp, Color.White)
-                .padding(20.dp)
-                .height(50.dp)
-                .width(330.dp)
-                .clip(RoundedCornerShape(10.dp))
-        )
-        {
-            Spacer(modifier = Modifier.height(5.dp))
-            LazyRow{
-                items(tur){tur->
-                    Card(modifier= Modifier
-                        .border(3.dp, Color.Black)
-                        .height(100.dp)
-                        .width(100.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(PurpleGrey40)){
-                        Column(modifier=Modifier
-                            .fillMaxSize()
-                            ,verticalArrangement = Arrangement.Center
-                            ,horizontalAlignment = Alignment.CenterHorizontally
-                        ){
-                            Text(text= tur)
-                        }
-                    }
-
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        Box(
-            modifier = Modifier
-                .border(3.dp, Color.White)
-                .background(PurpleGrey40)
-                .padding(20.dp)
-                .height(150.dp)
-                .width(330.dp)
-                .clip(RoundedCornerShape(10.dp))
-        )
-        {
-            Spacer(modifier = Modifier.height(5.dp))
-            LazyRow{
-                items(tur){tur->
-                    Card(modifier= Modifier
-                        .border(3.dp, Color.Black)
-                        .height(100.dp)
-                        .width(100.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(PurpleGrey40)){
-                        Column(modifier=Modifier
-                            .fillMaxSize()
-                            ,verticalArrangement = Arrangement.Center
-                            ,horizontalAlignment = Alignment.CenterHorizontally
-                        ){
-                            Text(text= tur)
-                        }
-                    }
-
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(900.dp))
-    }
-}
-
-@Composable
-fun  boxScreen(
-    resId: Int,
-    description: String,
-    ıconColor: Color?= Black,
-    bColor: Color?= Pink80,
-    size: Int?=30,
-    ıconSize: Int=40) {
-    Box(
-        modifier = Modifier
-            .size(size!!.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .background(bColor!!), contentAlignment = Alignment.Center
-    )
-    {
-        Icon(
-            painter = painterResource(id = resId),
-            contentDescription = description,
-            modifier = Modifier.size(ıconSize.dp),
-            tint = ıconColor!!
-        )
-    }
-    */
 

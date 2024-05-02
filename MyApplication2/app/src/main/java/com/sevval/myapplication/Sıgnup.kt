@@ -73,8 +73,8 @@ fun Sıgnup(navController: NavController) {
 
         Spacer(modifier = Modifier.height(10.dp))
         TextField(value = name, onValueChange = {name=it},
-            placeholder = { Text(text = "Name") },
-            label ={ Text(text="Enter Your Name") },
+            placeholder = { Text(text = "Email") },
+            label ={ Text(text="Enter Your Email") },
             singleLine = true ,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -84,8 +84,8 @@ fun Sıgnup(navController: NavController) {
         Text(text =name, fontSize = 25.sp )
 
         TextField(value = surname, onValueChange = {surname=it},
-            placeholder = { Text(text = "Surname") },
-            label ={ Text(text="Enter your Surname") } ,
+            placeholder = { Text(text = "User Name") },
+            label ={ Text(text="Enter your User Name") } ,
             singleLine = true ,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -97,7 +97,6 @@ fun Sıgnup(navController: NavController) {
             onValueChange = {
                 password = it
             },
-            placeholder = { Text(text = "example@gmail.com") },
             label = { Text(text = "Create Your Password") },
             trailingIcon = {
                 IconButton(onClick = {

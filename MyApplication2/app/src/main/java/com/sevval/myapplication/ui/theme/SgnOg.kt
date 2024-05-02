@@ -43,7 +43,7 @@ fun SgnOg(){
                     .clip(RoundedCornerShape(10.dp))
             ) {
                 Text(
-                    text = "Vırgo",
+                    text = "Capricorn",
                     fontSize = 40.sp,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
@@ -53,7 +53,7 @@ fun SgnOg(){
             Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = "Vırgo General Characteristics", fontSize = 30.sp,
+                text = "Capricorn General Characteristics", fontSize = 30.sp,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Left,
                 fontFamily = FontFamily.Serif
