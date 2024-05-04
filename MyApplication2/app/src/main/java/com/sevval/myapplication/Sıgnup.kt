@@ -42,6 +42,13 @@ import com.sevval.myapplication.ui.theme.Purple80
 
 @Composable
 fun Sıgnup(navController: NavController) {
+
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val dataStore = StoreUserEmail(context)
+    val savedEmail = dataStore.getEmail.collectAsState(initial = "")
+    val savedPassword = dataStore.getPass.collectAsState(initial = "")
+
     var name by remember { mutableStateOf(" ") }
     var surname by  remember{ mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -119,7 +126,9 @@ fun Sıgnup(navController: NavController) {
         Row (modifier= Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center){
             Button(onClick = {
-
+                scope.launch {
+                    dataStore.saveEmail(name)
+                }
             }) {
                 Text(text = "Save", fontSize= 25.sp)
             }
