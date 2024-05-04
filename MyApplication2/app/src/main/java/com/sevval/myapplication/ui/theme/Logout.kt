@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
 
         // Çıkış yap düğmesine tıklama işlevi ekle
         logoutButton.setOnClickListener {
-            // Oturumu kapatmak için gerekli işlemleri yap
-            // Örneğin, oturum bilgilerini temizle
             clearSession()
 
             // Giriş ekranına yönlendir
