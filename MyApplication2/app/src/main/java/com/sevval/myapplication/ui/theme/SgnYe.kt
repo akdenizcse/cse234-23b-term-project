@@ -86,7 +86,8 @@ fun SgnYe(){
                             "Cancer man has a sharp and practical intelligence. His ability to analyse is highly developed, he can easily analyse events, he loves everything about water, he is good with alcohol. In addition, due to its highly emotional structure, it loves when it loves and does not give up easily. He is extremely loyal to his partners in their relationships.\n" +
                             "\n" +
                             "Cancer men attach great importance to money, but this is due to the fact that he wants to feel financially secure and to be cautious in case his relatives fall into a difficult situation.\n" +
-                            "\n"
+                            "\n",
+                    color = Color.White
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
@@ -117,7 +118,8 @@ fun SgnYe(){
                             "* Animal: Shellfish \n"+
                             "* Plant: Hezaren flower, water lily, kenger grass\n"+
                             "* Precious Stone: Moonstone, amber, \n"+
-                            "* Precious Mineral:  Silver"
+                            "* Precious Mineral:  Silver",
+                    color = Color.White
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))

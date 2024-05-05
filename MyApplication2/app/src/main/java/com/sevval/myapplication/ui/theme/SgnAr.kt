@@ -85,7 +85,8 @@ fun SgnAr(){
                             "\n" +
                             "Aries man is very fond of his freedom. There is nothing he will not do for his friends and friends. He likes to help people and share their problems. He is generous and likes to be financially free. It is much more attractive for them to establish and run their own business.\n" +
                             "\n" +
-                            "When the Aries man is hurt, he becomes quite offensive and does not mince his words. He is critical, he can criticise with a harsh language. He is very fond of home life and family, but he also loves his life outside. This is due to his restless and mobile structure. He always wants to feel peaceful and comfortable at home.\n"
+                            "When the Aries man is hurt, he becomes quite offensive and does not mince his words. He is critical, he can criticise with a harsh language. He is very fond of home life and family, but he also loves his life outside. This is due to his restless and mobile structure. He always wants to feel peaceful and comfortable at home.\n",
+                    color = Color.White
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
@@ -115,7 +116,8 @@ fun SgnAr(){
                             "* Animal: Sheep\n"+
                             "* Plant: Geranium, Honeysuckle, Pars Lily\n"+
                             "* Precious Stone: Diamond \n"+
-                            "*Precious Mineral: Iron"
+                            "*Precious Mineral: Iron",
+                    color = Color.White
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))

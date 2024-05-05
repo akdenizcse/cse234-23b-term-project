@@ -67,7 +67,7 @@ fun SgnBa() {
                     .border(3.dp, Color.White)
                     .background(PurpleGrey40)
                     .padding(20.dp)
-                    .height(500.dp)
+                    .height(1500.dp)
                     .width(400.dp)
                     .clip(RoundedCornerShape(10.dp))
             ) {
@@ -84,16 +84,13 @@ fun SgnBa() {
                             "\n" +
                             "Pisces woman is very possessive and jealous of the man she loves and is prone to marriage. He is attached to his children and his wife.\n" +
                             "\n" +
-                            "Balık Burcu Erkeği Genel Özellikleri\n" +
-                            "\n" +
-                            "Balık burcu erkeği nazik, uyumlu,iyimser ve hayalperest yapısıyla dikkati çeker. Umursamaz tavırları olaylardan fazla etkilenmemesine neden olur. Düzenden ve sorumluluk almaktan hoşlanmaz. Başına buyruk yaşamaktan keyif alır.\n" +
-                            "\n" +
-                            "Balık burcu erkeği iş konusunda pratikliği sayesinde başarılı olur. Art niyetli değildir. İnsanlara kolayca güvenir.\n" +
-                            "\n" +
-                            "Balık burcu erkeği hayranlık duyduğu kadınlara aşık olur .Duygusal ve anlayışlı bir yapısı vardır.Sevdiği kadını mutlu etmek için türlü romantizm oyunlarına baş vuracaktır. Sanatçı ruhludur ve güzelliğe çok önem verir.Aşk onun için çok önemlidir. Aradığı kişiyi bulduğuna inanırsa sadık bir eş olur, yoksa çeşitli maceralar peşinde koşmaya devam edecektir.\n" +
-                            "\n" +
-                            "Balık burcu erkeği kişiliğini ve derin duygularını anlayan biriyle evlenip ömrünün sonuna kadar mutlu olur. Eşine ve çocuklarına düşkün, sadık ve düşünceli olacaktır."
-                )
+                            "Pisces Man General Characteristics\n" +
+                            "Pisces man attracts attention with his gentle, harmonious, optimistic and dreamer structure. Its reckless behaviour causes it not to be too affected by events. He does not like to take responsibility and order. He enjoys living on his own. \n" +
+                            "Pisces man is successful in business thanks to his practicality. He has no ulterior motives. Pisces man falls in love with women he admires. He has an emotional and understanding structure. He will resort to all kinds of romance games to make the woman he loves happy." +
+                            " He has an artistic spirit and attaches great importance to beauty, love is very important to him. If he believes that he has found the person he is looking for, he will be a loyal spouse, otherwise he will continue to pursue various adventures. The Pisces man will marry someone who understands his personality and deep feelings and will be happy until the end of his life. " +
+                            "He will be fond of his wife and children, loyal and thoughtful.\n" +
+                            "\n",
+                    color = Color.White)
             }
             Spacer(modifier = Modifier.height(10.dp))
             Text(
@@ -123,7 +120,8 @@ fun SgnBa() {
                             "* Animal: Fishes \n"+
                             "* Plant: Fig and willow , water lily, fulia\n"+
                             "* Precious Stone: Pearl \n"+
-                            "* Precious Mineral:  Platinum"
+                            "* Precious Mineral:  Platinum",
+                    color = Color.White
 
 
                 )

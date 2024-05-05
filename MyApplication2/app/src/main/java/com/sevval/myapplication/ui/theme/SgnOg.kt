@@ -63,7 +63,7 @@ fun SgnOg(){
                     .border(3.dp, Color.White)
                     .background(PurpleGrey40)
                     .padding(20.dp)
-                    .height(500.dp)
+                    .height(1500.dp)
                     .width(400.dp)
                     .clip(RoundedCornerShape(10.dp))
             ) {
@@ -89,7 +89,8 @@ fun SgnOg(){
                             "Capricorn man attaches great importance to friendship and examines and selects the people he makes friends with. It has strict rules and does not want to go out of these rules easily.\n" +
                             "\n" +
                             "Capricorn man is fond of his freedom and does not like the other party to direct and restrict him in bilateral relationships. He will be happy with a woman suitable for his personality. When he loves, he becomes a loyal and jealous spouse. He likes women who are more intelligent, well-groomed, know what they want and have personality. His relationships are long lasting. He has a personality suitable for marriage. He is an ideal husband and an ideal father. He will mobilise all his best efforts to raise his children in the best way.\n" +
-                            "\n"
+                            "\n",
+                    color = Color.White
 
 
                 )
@@ -126,7 +127,8 @@ fun SgnOg(){
                             "* Animal: Goats and other horned animals\n"+
                             "* Plant: Carnation, ivy, pine, poplar, elm\n"+
                             "* Precious Stone: Black diamond, amber \n"+
-                            "* Precious Mineral:  Lead"
+                            "* Precious Mineral:  Lead",
+                    color = Color.White
                 )
             }
 

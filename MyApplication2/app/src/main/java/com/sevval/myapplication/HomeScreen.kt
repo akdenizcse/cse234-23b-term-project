@@ -2,7 +2,9 @@
 
 package com.sevval.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -46,6 +48,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
@@ -85,124 +88,109 @@ import com.sevval.myapplication.ui.theme.PurpleGrey40
 import com.sevval.myapplication.ui.theme.PurpleGrey80
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.sevval.myapplication.ui.theme.Profile
+import com.sevval.myapplication.ui.theme.Screen
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController) {
     val uriHandler = LocalUriHandler.current
-    val items = listOf(
-        DrawerItems(
-            title = "Home",
-            selectedIcon = Icons.Filled.Home,
-            unselectedIcon = Icons.Outlined.Home
-        ),
-        DrawerItems(
-            title = "info",
-            selectedIcon = Icons.Filled.Info,
-            unselectedIcon = Icons.Outlined.Info
-        ),
-        DrawerItems(
-            title = "Favorite",
-            selectedIcon = Icons.Filled.Favorite,
-            unselectedIcon = Icons.Outlined.Favorite
-        ),
-        DrawerItems(
-            title = "Profile",
-            selectedIcon = Icons.Filled.Person,
-            unselectedIcon = Icons.Outlined.Person
-        ),
-        DrawerItems(
-            title = "setting",
-            selectedIcon = Icons.Filled.Settings,
-            unselectedIcon = Icons.Outlined.Settings
-        ),
-        DrawerItems(
-            title = "Log out",
-            selectedIcon = Icons.Filled.ExitToApp,
-            unselectedIcon = Icons.Outlined.ExitToApp
-        )
 
-    )
+    val navControl = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
-    var selectedItemIndex by rememberSaveable {
-        mutableStateOf(0)
-    }
+    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current.applicationContext
+
     ModalNavigationDrawer(
+        drawerState = drawerState,
+        gesturesEnabled = true,
         drawerContent = {
             ModalDrawerSheet {
                 Spacer(modifier = Modifier.height(16.dp))
-                items.forEachIndexed { index, item ->
-                    NavigationDrawerItem(
-                        label = { Text(text = item.title) },
-                        selected = index == selectedItemIndex,
-                        onClick = {
-                            //navController.natigate(item.route)
-                            selectedItemIndex = index
-
-                            scope.launch {
-                                drawerState.close()
-                            }
-                        },
-                        icon = {
-                            Icon(
-                                imageVector = if (index == selectedItemIndex) {
-                                    item.selectedIcon
-                                } else item.unselectedIcon,
-                                contentDescription = item.title
-                            )
-                        }, badge = {
-                            item.badgeCount?.let {
-
-                                Text(text = item.badgeCount.toString())
-                            }
-                        },
-                        modifier = Modifier
-                            .padding(NavigationDrawerItemDefaults.ItemPadding)
-                    )
+                Box(
+                    modifier = Modifier
+                        .background(Color.White)
+                        .fillMaxWidth()
+                        .height(150.dp)
+                ) {
+                    Text(text = "Menu")
                 }
+                Divider()
+                NavigationDrawerItem(label = { Text(text = "Home", color = Pink40) },
+                    selected = false,
+                    onClick = {
+                        coroutineScope.launch {
+                            drawerState.close()
+                        }
+                        navControl.navigate(Screen.HomeScreen.route) {
+                            popUpTo(0)
+                        }
+                    })
+                NavigationDrawerItem(label = { Text(text = "Profile", color = Pink40) },
+                    selected = false,
+                    onClick = {
+                        coroutineScope.launch {
+                            drawerState.close()
+                        }
+                        navControl.navigate(Screen.Profile.route)
+                    })
+                NavigationDrawerItem(label = { Text(text = "logout", color = Pink40) },
+                    selected = false,
+                    onClick = {
+                        coroutineScope.launch {
+                            drawerState.close()
+                        }
+                        Toast.makeText(context,"logout", Toast.LENGTH_SHORT).show()
+                    })
             }
         },
-        drawerState = drawerState
     ) {
-        Scaffold(topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "Home page")
-                },
-                navigationIcon = {
-                    IconButton(
-                        onClick =
-                        {
-                            scope.launch {
+        Scaffold(
+            topBar = {
+                val coroutineScope = rememberCoroutineScope()
+                TopAppBar(title = { Text(text = "Home Page") },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Pink40,
+                        titleContentColor = Color.White,
+                        navigationIconContentColor = Color.White
+                    ),
+                    navigationIcon = {
+                        IconButton(onClick = {
+                            coroutineScope.launch {
                                 drawerState.open()
                             }
+                        }) {
+                            Icon(
+                                Icons.Rounded.Menu, contentDescription = "menuButton"
+                            )
                         }
-                    )
-                    {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = "Menu"
-                        )
-                    }
-                }
-            )
-        }
-        )
+                    })
+            }
+        ) {
+            NavHost(navController = navControl, startDestination = "Log ın") {
+                composable(route = "Log ın") { Logın(navControl) }
+                composable(Screen.Profile.route) { Profile() }
+                composable(Screen.HomeScreen.route) { HomeScreen(navControl) }
 
-        { paddingValue ->
+            }
 
             val tur = listOf("Pisces   ", ".  ", ".  ", ". ")
             val dıs = listOf("Capricorn", ".", ".    ", ".")
-            val face = listOf("Aries", ".", .", ".")
+            val face = listOf("Aries", ".",".", ".")
             val dr = listOf("Cancer", ".", ".", ".")
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
