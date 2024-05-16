@@ -64,7 +64,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sevval.myapplication.ui.theme.About
 import com.sevval.myapplication.ui.theme.Black
+import com.sevval.myapplication.ui.theme.Blog
 import com.sevval.myapplication.ui.theme.MyApplicationTheme
 import com.sevval.myapplication.ui.theme.Pink40
 import com.sevval.myapplication.ui.theme.Profile
@@ -131,6 +133,22 @@ fun Navigation(){
                             popUpTo(0)
                         }
                     })
+                NavigationDrawerItem(label = { Text(text = "About", color = Pink40) },
+                    selected = false,
+                    onClick = {
+                        coroutineScope.launch {
+                            drawerState.close()
+                        }
+                        navControl.navigate(Screen.About.route)
+                    })
+                NavigationDrawerItem(label = { Text(text = "Blog", color = Pink40) },
+                    selected = false,
+                    onClick = {
+                        coroutineScope.launch {
+                            drawerState.close()
+                        }
+                        navControl.navigate(Screen.Blog.route)
+                    })
                 NavigationDrawerItem(label = { Text(text = "Profile", color = Pink40) },
                     selected = false,
                     onClick = {
@@ -175,6 +193,8 @@ fun Navigation(){
             NavHost(navController = navControl, startDestination = "Log ın") {
                 composable(route = "Log ın") { Logın(navControl) }
                 composable(Screen.Profile.route) { Profile() }
+                composable(Screen.About.route) { About() }
+                composable(Screen.Blog.route) { Blog() }
                 composable(Screen.HomeScreen.route) { HomeScreen(navControl) }
                 composable(route="SgnBa"){
                     SgnBa()
