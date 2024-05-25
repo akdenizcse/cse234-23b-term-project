@@ -105,6 +105,7 @@ import com.sevval.myapplication.ui.theme.Profile
 import com.sevval.myapplication.ui.theme.Screen
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController) {
