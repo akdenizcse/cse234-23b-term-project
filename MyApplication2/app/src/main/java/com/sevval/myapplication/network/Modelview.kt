@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.Callback
 
 class Modelview: ViewModel() {
 
@@ -15,7 +16,7 @@ class Modelview: ViewModel() {
 
     fun getHoroscopeFromAPI(sign:String) {
         val request=ApiRequest("2020-01-01","en",sign)
-        RetrofitInstance.api.sendRequest(request).enqueue(object : Drawable.Callback<ApiResponse> {
+        RetrofitInstance.api.sendRequest(request).enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {
                     Log.d("hatamVM", response.body().toString()+"dasda")

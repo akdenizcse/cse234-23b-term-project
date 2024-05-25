@@ -155,7 +155,7 @@ fun HomeScreen(navController: NavController) {
                         coroutineScope.launch {
                             drawerState.close()
                         }
-                        Toast.makeText(context,"logout", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "logout", Toast.LENGTH_SHORT).show()
                     })
             }
         },
@@ -189,21 +189,17 @@ fun HomeScreen(navController: NavController) {
 
             }
 
-            val tur = listOf("Pisces   ", ".  ", ".  ", ". ")
-            val dıs = listOf("Capricorn", ".", ".    ", ".")
-            val face = listOf("Aries", ".",".", ".")
-            val dr = listOf("Cancer", ".", ".", ".")
-            Column(
+            LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top,
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Purple80)
             ) {
+                item {
+                    Spacer(modifier = Modifier.height(100.dp))
 
-                Spacer(modifier = Modifier.height(100.dp))
-
-                Button(onClick = {
+                    Button(onClick = {
                         // Anket linkini aç
                         uriHandler.openUri("https://docs.google.com/forms/d/1sz33N4Kau3mRmrsEBxjAaacuA9_3S7FUjVMJnO-SrlA/edit")
                     }) {
@@ -211,32 +207,31 @@ fun HomeScreen(navController: NavController) {
                     }
 
 
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "Horoscopes", fontSize =20.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    fontFamily = FontFamily.Serif
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Box(
-                    modifier = Modifier
-                        .background(PurpleGrey40)
-                        .border(3.dp, Color.White)
-                        .padding(20.dp)
-                        .height(120.dp)
-                        .width(330.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                )
-                {
                     Spacer(modifier = Modifier.height(10.dp))
-                    LazyRow {
-                        items(tur) { tur ->
+                    Text(
+                        text = "Horoscopes", fontSize = 20.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        fontFamily = FontFamily.Serif
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(20.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Row {
                             Card(
                                 modifier = Modifier
                                     .border(3.dp, Color.Black)
                                     .height(100.dp)
-                                    .width(86.dp)
+                                    .width(330.dp)
                                     .clip(RoundedCornerShape(20.dp))
                                     .background(PurpleGrey40),
                                 elevation = CardDefaults.cardElevation(10.dp)
@@ -254,37 +249,39 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.ba), contentDescription = "Pisces" ,
+                                        Image(
+                                            painter = painterResource(id = R.drawable.psces),
+                                            contentDescription = "Pisces",
                                             Modifier
                                                 .width(900.dp)
-                                                .height(900.dp))
-                                        Text(text = tur)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = tur)
                                     }
                                 }
                             }
 
+
                         }
                     }
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                Box(
-                    modifier = Modifier
-                        .background(PurpleGrey40)
-                        .border(3.dp, Color.White)
-                        .padding(20.dp)
-                        .height(50.dp)
-                        .width(330.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                )
-                {
-                    Spacer(modifier = Modifier.height(5.dp))
-                    LazyRow {
-                        items(dıs) { dıs ->
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
                             Card(
                                 modifier = Modifier
                                     .border(3.dp, Color.Black)
-                                    .height(40.dp)
-                                    .width(100.dp)
+                                    .height(100.dp)
+                                    .width(330.dp)
                                     .clip(RoundedCornerShape(20.dp))
                                     .background(PurpleGrey40),
                                 elevation = CardDefaults.cardElevation(10.dp)
@@ -302,37 +299,38 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(2.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.og), contentDescription = "Capricorn",
+                                        Image(
+                                            painter = painterResource(id = R.drawable.og),
+                                            contentDescription = "Capricorn",
                                             Modifier
-                                                .width(1400.dp)
-                                                .height(1400.dp) )
-                                        Text(text = dıs)
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        // Text(text = dıs)
                                     }
                                 }
                             }
 
                         }
                     }
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                Box(
-                    modifier = Modifier
-                        .background(PurpleGrey40)
-                        .border(3.dp, Color.White)
-                        .padding(20.dp)
-                        .height(50.dp)
-                        .width(330.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                )
-                {
-                    Spacer(modifier = Modifier.height(5.dp))
-                    LazyRow {
-                        items(face) { face ->
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
                             Card(
                                 modifier = Modifier
                                     .border(3.dp, Color.Black)
-                                    .height(70.dp)
-                                    .width(90.dp)
+                                    .height(100.dp)
+                                    .width(330.dp)
                                     .clip(RoundedCornerShape(20.dp))
                                     .background(PurpleGrey40),
                                 elevation = CardDefaults.cardElevation(10.dp)
@@ -350,37 +348,38 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(1.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.k), contentDescription = "Aries",
+                                        Image(
+                                            painter = painterResource(id = R.drawable.k),
+                                            contentDescription = "Aries",
                                             Modifier
-                                                .width(1400.dp)
-                                                .height(1400.dp) )
-                                        Text(text = face)
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = face)
                                     }
                                 }
                             }
 
                         }
                     }
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                Box(
-                    modifier = Modifier
-                        .border(3.dp, Color.White)
-                        .background(PurpleGrey40)
-                        .padding(20.dp)
-                        .height(150.dp)
-                        .width(330.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                )
-                {
-                    Spacer(modifier = Modifier.height(5.dp))
-                    LazyRow {
-                        items(dr) { dr ->
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
                             Card(
                                 modifier = Modifier
                                     .border(3.dp, Color.Black)
                                     .height(100.dp)
-                                    .width(100.dp)
+                                    .width(330.dp)
                                     .clip(RoundedCornerShape(20.dp))
                                     .background(PurpleGrey40),
                                 elevation = CardDefaults.cardElevation(10.dp)
@@ -398,19 +397,405 @@ fun HomeScreen(navController: NavController) {
                                         shape = CutCornerShape(10),
                                         border = BorderStroke(1.dp, Color.White)
                                     ) {
-                                        Image(painter = painterResource(id = R.drawable.y), contentDescription = "Cancer",
+                                        Image(
+                                            painter = painterResource(id = R.drawable.y),
+                                            contentDescription = "Cancer",
                                             Modifier
-                                                .width(1400.dp)
-                                                .height(1400.dp) )
-                                        Text(text = dr)
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
                                     }
                                 }
                             }
-
                         }
                     }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnAqua")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.aqus),
+                                            contentDescription = "aqus",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnLeo")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.leo),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnGemini")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.ba),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnSagtt")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.sagtarus),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnScorp")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.scorpo),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnTaurus")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.taurus),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnVrgo")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.vrgo),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(PurpleGrey40)
+                            .border(3.dp, Color.White)
+                            .padding(20.dp)
+                            .height(120.dp)
+                            .width(330.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                    {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .border(3.dp, Color.Black)
+                                    .height(100.dp)
+                                    .width(330.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(PurpleGrey40),
+                                elevation = CardDefaults.cardElevation(10.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("SgnLbra")
+                                        },
+                                        shape = CutCornerShape(10),
+                                        border = BorderStroke(1.dp, Color.White)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.kova),
+                                            contentDescription = "Cancer",
+                                            Modifier
+                                                .width(900.dp)
+                                                .height(900.dp)
+                                        )
+                                        //Text(text = dr)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(900.dp))
                 }
-                Spacer(modifier = Modifier.height(900.dp))
             }
         }
     }

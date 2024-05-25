@@ -2,9 +2,11 @@ package com.sevval.myapplication
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -64,6 +66,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sevval.myapplication.network.HoroscopeCharacteristics
+import com.sevval.myapplication.network.Modelview
 import com.sevval.myapplication.ui.theme.About
 import com.sevval.myapplication.ui.theme.Black
 import com.sevval.myapplication.ui.theme.Blog
@@ -81,6 +85,7 @@ import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
+    val vmodel: Modelview by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -91,142 +96,356 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Navigation()
+
+                    vmodel.getHoroscopeFromAPI("gemini")
+                    vmodel.response.observe(this) {
+                        it.horoscope
+                        Log.d("hatamMAi", it.toString() + "dsa")
+
+                    }
                 }
             }
         }
     }
-}
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Navigation(){
-    val uriHandler = LocalUriHandler.current
-    val navControl = rememberNavController()
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val coroutineScope = rememberCoroutineScope()
-    val context = LocalContext.current.applicationContext
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun Navigation() {
+        val uriHandler = LocalUriHandler.current
+        val navControl = rememberNavController()
+        val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+        val coroutineScope = rememberCoroutineScope()
+        val context = LocalContext.current.applicationContext
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        gesturesEnabled = true,
-        drawerContent = {
-            ModalDrawerSheet {
-                Spacer(modifier = Modifier.height(16.dp))
-                Box(
-                    modifier = Modifier
-                        .background(Color.White)
-                        .fillMaxWidth()
-                        .height(150.dp)
-                ) {
-                    Text(text = "Menu")
-                }
-                Divider()
-                NavigationDrawerItem(label = { Text(text = "Home", color = Pink40) },
-                    selected = false,
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-                        navControl.navigate(Screen.HomeScreen.route) {
-                            popUpTo(0)
-                        }
-                    })
-                NavigationDrawerItem(label = { Text(text = "About", color = Pink40) },
-                    selected = false,
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-                        navControl.navigate(Screen.About.route)
-                    })
-                NavigationDrawerItem(label = { Text(text = "Blog", color = Pink40) },
-                    selected = false,
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-                        navControl.navigate(Screen.Blog.route)
-                    })
-                NavigationDrawerItem(label = { Text(text = "Profile", color = Pink40) },
-                    selected = false,
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-                        navControl.navigate(Screen.Profile.route)
-                    })
-                NavigationDrawerItem(label = { Text(text = "logout", color = Pink40) },
-                    selected = false,
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-                        Toast.makeText(context,"logout", Toast.LENGTH_SHORT).show()
-                    })
-            }
-        },
-    ) {
-        Scaffold(
-            topBar = {
-                val coroutineScope = rememberCoroutineScope()
-                TopAppBar(title = { Text(text = "") },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Pink40,
-                        titleContentColor = Color.White,
-                        navigationIconContentColor = Color.White
-                    ),
-                    navigationIcon = {
-                        IconButton(onClick = {
+        ModalNavigationDrawer(
+            drawerState = drawerState,
+            gesturesEnabled = true,
+            drawerContent = {
+                ModalDrawerSheet {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(Color.White)
+                            .fillMaxWidth()
+                            .height(150.dp)
+                    ) {
+                        Text(text = "Menu")
+                    }
+                    Divider()
+                    NavigationDrawerItem(label = { Text(text = "Home", color = Pink40) },
+                        selected = false,
+                        onClick = {
                             coroutineScope.launch {
-                                drawerState.open()
+                                drawerState.close()
                             }
-                        }) {
-                            Icon(
-                                Icons.Rounded.Menu, contentDescription = "menuButton"
-                            )
-                        }
-                    })
-            }
+                            navControl.navigate(Screen.HomeScreen.route) {
+                                popUpTo(0)
+                            }
+                        })
+                    NavigationDrawerItem(label = { Text(text = "About", color = Pink40) },
+                        selected = false,
+                        onClick = {
+                            coroutineScope.launch {
+                                drawerState.close()
+                            }
+                            navControl.navigate(Screen.About.route)
+                        })
+                    NavigationDrawerItem(label = { Text(text = "Blog", color = Pink40) },
+                        selected = false,
+                        onClick = {
+                            coroutineScope.launch {
+                                drawerState.close()
+                            }
+                            navControl.navigate(Screen.Blog.route)
+                        })
+                    NavigationDrawerItem(label = { Text(text = "Profile", color = Pink40) },
+                        selected = false,
+                        onClick = {
+                            coroutineScope.launch {
+                                drawerState.close()
+                            }
+                            navControl.navigate(Screen.Profile.route)
+                        })
+                    NavigationDrawerItem(label = { Text(text = "logout", color = Pink40) },
+                        selected = false,
+                        onClick = {
+                            coroutineScope.launch {
+                                drawerState.close()
+                            }
+                            Toast.makeText(context, "logout", Toast.LENGTH_SHORT).show()
+                        })
+                }
+            },
         ) {
-            NavHost(navController = navControl, startDestination = "Log ın") {
-                composable(route = "Log ın") { Logın(navControl) }
-                composable(Screen.Profile.route) { Profile() }
-                composable(Screen.About.route) { About() }
-                composable(Screen.Blog.route) { Blog() }
-                composable(Screen.HomeScreen.route) { HomeScreen(navControl) }
-                composable(route="SgnBa"){
-                    SgnBa()
+            Scaffold(
+                topBar = {
+                    val coroutineScope = rememberCoroutineScope()
+                    TopAppBar(title = { Text(text = "") },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = Pink40,
+                            titleContentColor = Color.White,
+                            navigationIconContentColor = Color.White
+                        ),
+                        navigationIcon = {
+                            IconButton(onClick = {
+                                coroutineScope.launch {
+                                    drawerState.open()
+                                }
+                            }) {
+                                Icon(
+                                    Icons.Rounded.Menu, contentDescription = "menuButton"
+                                )
+                            }
+                        })
                 }
-                composable(route="SgnOg"){
-                    SgnOg()
-                }
-                composable(route="SgnAr"){
-                    SgnAr()
-                }
-                composable(route="SgnYe"){
-                    SgnYe()
-                }
-                composable(route="Sıgn up"){
-                    Sıgnup(navControl)
-                }
+            ) {
+                NavHost(navController = navControl, startDestination = "Log ın") {
+                    composable(route = "Log ın") { Logın(navControl) }
+                    composable(Screen.Profile.route) { Profile() }
+                    composable(Screen.About.route) { About() }
+                    composable(Screen.Blog.route) { Blog() }
+                    composable(Screen.HomeScreen.route) { HomeScreen(navControl) }
+                    composable(route = "SgnBa") {
+                        var character = HoroscopeCharacteristics(
+                            "Nept",
+                            "sada",
+                            "Variable",
+                            "2, 6",
+                            "Friday",
+                            "Akuamarin",
+                            "Turquoise, lime green",
+                            " Moon",
+                            "Fishes",
+                            "Fig and willow , water lily, fulia",
+                            "Pearl",
+                            "Platinum"
+                        )
 
+                        SgnBa("pisces", character)
+                    }
+                    composable(route = "SgnOg") {
+                        var character = HoroscopeCharacteristics(
+                            "Saturn",
+                            "Soil",
+                            " Pioneer",
+                            "2, 8",
+                            "Saturday",
+                            "Grena",
+                            "Dark green, brown",
+                            "The Devil",
+                            "Goats and other horned animals",
+                            "Carnation, ivy, pine, poplar, elm",
+                            "Black diamond, amber",
+                            "Lead"
+                        )
+                        SgnBa("capricorn", character)
+                    }
+                    composable(route = "SgnAr") {
+                        var character = HoroscopeCharacteristics(
+                            "Mars",
+                            "Fire",
+                            " Pioneer",
+                            "1,9",
+                            "Tuesday",
+                            "Ruby",
+                            "Red",
+                            "Moon",
+                            "Sheep",
+                            "Geranium, Honeysuckle, Pars Lily",
+                            "Diamond",
+                            "Iron"
+                        )
+
+                        SgnBa("aries", character)
+                    }
+                    composable(route = "SgnYe") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("cancer", character)
+
+                    }
+                    composable(route = "SgnAqua") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("aquarius", character)
+
+                    }
+                    composable(route = "SgnLeo") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("leo", character)
+
+                    }
+                    composable(route = "SgnGemini") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("gemini", character)
+
+                    }
+                    composable(route = "SgnSagtt") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("sagittarius", character)
+
+                    }
+                    composable(route = "SgnScorp") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("scorpio", character)
+
+                    }
+                    composable(route = "SgnTaurus") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("taurus", character)
+
+                    }
+                    composable(route = "SgnVrgo") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("virgo", character)
+
+                    }
+                    composable(route = "SgnLbra") {
+                        var character = HoroscopeCharacteristics(
+                            "Moon",
+                            "Water",
+                            "Pioneer",
+                            "3,7",
+                            "Monday",
+                            "Pearl",
+                            "White, teal, silver",
+                            " Moon",
+                            "Shellfish",
+                            "Hezaren flower, water lily, kenger grass",
+                            " Moonstone, amber,",
+                            "Silver"
+                        )
+
+                        SgnBa("libra", character)
+
+                    }
+                    composable(route = "Sıgn up") {
+                        Sıgnup(navControl)
+                    }
+
+                }
             }
         }
     }
-}
 
 
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        MyApplicationTheme {
 
-
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-
+        }
     }
 }
